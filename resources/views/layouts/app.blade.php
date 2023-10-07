@@ -7,17 +7,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Rentease') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href={{ asset('assets/css/styles.css') }}>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app">
+    @yield('content')
+    
+
+
+
+    {{-- <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -75,6 +81,23 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    </div> --}}
+
+    <script>
+    function toggleView(string) {
+        const login = document.getElementById('loginForm')
+        const register = document.getElementById('registerForm')
+
+        if (string === 'login') {
+            login.style.display = 'block'
+            register.style.display = 'none'
+        }
+
+        if (string === 'register') {
+            login.style.display = 'none'
+            register.style.display = 'block'
+        }
+    }
+  </script>
 </body>
 </html>

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('phonenumber');
             $table->string('email');
             $table->unsignedBigInteger('roomid');
-            $table->string('rentdue' ,5,2);
-            $table->double('rentpaid',5,2);
-            $table->double('balance',5,2);
+            $table->string('rentdue' ,5,2)->default('0');
+            $table->double('rentpaid',5,2)->default(0);
+            $table->double('balance',5,2)->default(0);
            
             $table->date('datemovedin');
             $table->date('datemovedout')->nullable();
