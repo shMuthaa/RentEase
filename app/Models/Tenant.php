@@ -26,18 +26,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tenant extends Model
 {
+
   static $rules = [
     'fullname' => 'required',
     'phonenumber' => 'required',
     'email' => 'required',
     'roomid' => 'required',
-    'rentdue' => 'required',
-    'rentpaid' => 'required',
-    'balance' => 'required',
   ];
-
-
-  protected $fillable = ['fullname','phonenumber','email','roomid','datemovedin','datemovedout'];
 
   protected $perPage = 20;
 
@@ -46,7 +41,7 @@ class Tenant extends Model
    *
    * @var array
    */
-  protected $fillable = ['fullname', 'phonenumber', 'email', 'roomid', 'rentdue', 'rentpaid', 'balance', 'datemovedin', 'datemovedout'];
+  protected $fillable = ['fullname', 'phonenumber', 'email', 'roomid', 'datemovedin', 'datemovedout'];
 
   public function tenantRoomsRelationship()
   {
