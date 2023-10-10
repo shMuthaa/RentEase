@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<section class="container-flid">
+<section class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
@@ -14,7 +14,7 @@
             <div class="card card-default">
                
                 <div class="card-body">
-                    <form method="POST" action="{{ route('tenants.store') }}"  role="form" enctype="multipart/form-data">
+                    <form class="custom-form" method="POST" action="{{ route('tenants.store') }}"  role="form" enctype="multipart/form-data" >
                         @csrf
 
                         @include('tenant.form')

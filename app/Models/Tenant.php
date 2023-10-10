@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tenant extends Model
 {
-
   static $rules = [
     'fullname' => 'required',
     'phonenumber' => 'required',
@@ -36,6 +35,9 @@ class Tenant extends Model
     'rentpaid' => 'required',
     'balance' => 'required',
   ];
+
+
+  protected $fillable = ['fullname','phonenumber','email','roomid','datemovedin','datemovedout'];
 
   protected $perPage = 20;
 

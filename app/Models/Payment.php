@@ -20,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Payment extends Model
 {
-
   static $rules = [
     'roomid' => 'required',
     'tenantid' => 'required',

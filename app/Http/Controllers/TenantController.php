@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\Tenant;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 /**
@@ -32,12 +33,11 @@ class TenantController extends Controller
      */
     public function create()
     {
-        $rooms = Room::latest()->get();
+        $tenant = new Tenant();
+        $rooms = Room::all(); 
 
-        // $tenant = new Tenant();
-        return view('tenant.create', [
-            'rooms' => $rooms,
-        ]);
+        return view('tenant.create', compact('tenant','rooms'));
+
     }
 
     /**
