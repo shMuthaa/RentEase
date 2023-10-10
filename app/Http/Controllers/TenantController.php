@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\Tenant;
-use App\Models\Room;
 use Illuminate\Http\Request;
 
 /**

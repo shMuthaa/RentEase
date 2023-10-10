@@ -46,7 +46,7 @@ class Tenant extends Model
    *
    * @var array
    */
-  protected $fillable = ['fullname', 'phonenumber', 'email', 'roomid', 'rentdue', 'rentpaid', 'balance', 'datemovedin', 'datemovedout'];
+  // protected $fillable = ['fullname', 'phonenumber', 'email', 'roomid', 'rentdue', 'rentpaid', 'balance', 'datemovedin', 'datemovedout'];
 
   public function tenantRoomsRelationship()
   {
