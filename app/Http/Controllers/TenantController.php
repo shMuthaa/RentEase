@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Room;
 use App\Models\Tenant;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 /**
@@ -36,7 +36,6 @@ class TenantController extends Controller
         $rooms = Room::all(); 
 
         return view('tenant.create', compact('tenant','rooms'));
-
     }
 
     /**
@@ -47,24 +46,9 @@ class TenantController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('hello');
-        $this->validate($request, [
-            'fullname' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'room' => 'required',
-            'datemovedin' => 'required',
-        ]);
+        request()->validate(Tenant::$rules);
 
-        Tenant::create([
-            'fullname' => $request->fullname,
-            'phonenumber' => $request->phone,
-            'email' => $request->email,
-            'roomid' => $request->room,
-            'rentdue' => 0,
-            'datemovedin' => $request->datemovedin,
-            'rentPaid' => 0,
-        ]);
+        $tenant = Tenant::create($request->all());
 
         return redirect()->route('tenants.index')
             ->with('success', 'Tenant created successfully.');

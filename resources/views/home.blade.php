@@ -97,7 +97,7 @@
 
             <!-- Recent Orders -->
 
-            <div class="recent-order">
+            {{-- <div class="recent-order">
                 <h2 class="recent-order__title">Recent Orders</h2>
                 <table class="recent-order__table">
                     <thead>
@@ -149,7 +149,7 @@
 
                 </table>
                 <a href="#" class="recent-order__show-all">Show All</a>
-            </div>
+            </div> --}}
         </div>
     </main>
 
