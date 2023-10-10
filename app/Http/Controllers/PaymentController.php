@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Room;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 /**
@@ -31,8 +33,13 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        $payment = new Payment();
-        return view('payment.create', compact('payment'));
+        $tenants = Tenant::latest()->get();
+        $rooms = Room::latest()->get();
+
+        return view('payment.create', [
+            'rooms' => $rooms,
+            'tenants' => $tenants,
+        ]);
     }
 
     /**
@@ -43,9 +50,20 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Payment::$rules);
+        $this->validate($request, [
+            'tenant' => 'required',
+            'datepaid' => 'required',
+            'amountPaid' => 'required',
+        ]);
 
-        $payment = Payment::create($request->all());
+        $tenant = Tenant::find($request->tenant);
+
+        Payment::create([
+            'roomid' => $tenant->tenantRoomsRelationship->id,
+            'tenantid' => $tenant->id,
+            'datepaid' => $request->datepaid,
+            'amountpaid' => $request->amountPaid,
+        ]);
 
         return redirect()->route('payments.index')
             ->with('success', 'Payment created successfully.');
