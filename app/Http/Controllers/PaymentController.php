@@ -38,6 +38,7 @@ class PaymentController extends Controller
         $rooms = Room::all();
         $tenants =  Tenant::all();
         return view('payment.create', compact('payment','tenants','rooms'));
+
     }
 
     /**
@@ -48,9 +49,20 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Payment::$rules);
+        $this->validate($request, [
+            'tenant' => 'required',
+            'datepaid' => 'required',
+            'amountPaid' => 'required',
+        ]);
 
-        $payment = Payment::create($request->all());
+        $tenant = Tenant::find($request->tenant);
+
+        Payment::create([
+            'roomid' => $tenant->tenantRoomsRelationship->id,
+            'tenantid' => $tenant->id,
+            'datepaid' => $request->datepaid,
+            'amountpaid' => $request->amountPaid,
+        ]);
 
         return redirect()->route('payments.index')
             ->with('success', 'Payment created successfully.');
