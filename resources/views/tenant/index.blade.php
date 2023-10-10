@@ -12,10 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
- 
-
                              <div class="float-right">
-                                <a href="{{ route('tenants.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('tenants.create') }}" class="btn btn-primary btn-sm float-right custom-button"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -29,7 +27,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="recent-order__table table table-striped table-hover">
+                            <table class="recent-order__table table table-striped table-hover custom-table">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>

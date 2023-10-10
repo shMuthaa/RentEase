@@ -16,7 +16,7 @@
                         <span class="card-title">{{ __('Update') }} Payment</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('payments.update', $payment->id) }}"  role="form" enctype="multipart/form-data">
+                        <form class="custom-form" method="POST" action="{{ route('payments.update', $payment->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

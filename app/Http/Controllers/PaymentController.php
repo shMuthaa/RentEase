@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Room;
+use App\Models\Tenant;
+
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +35,9 @@ class PaymentController extends Controller
     public function create()
     {
         $payment = new Payment();
-        return view('payment.create', compact('payment'));
+        $rooms = Room::all();
+        $tenants =  Tenant::all();
+        return view('payment.create', compact('payment','tenants','rooms'));
     }
 
     /**

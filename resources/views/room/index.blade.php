@@ -16,7 +16,7 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                              <div class="float-right">
-                                <a href="{{ route('rooms.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('rooms.create') }}" class="btn btn-primary btn-sm float-right custom-button"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -29,7 +29,7 @@
                     @endif
 
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive custom-table">
                             <table class="recent-order__table table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>

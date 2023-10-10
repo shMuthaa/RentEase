@@ -18,7 +18,7 @@
 
                 <div class="card card-default">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('rooms.update', $room->id) }}"  role="form" enctype="multipart/form-data">
+                        <form class="custom-form" method="POST" action="{{ route('rooms.update', $room->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

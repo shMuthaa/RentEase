@@ -17,7 +17,7 @@
 
                 <div class="card card-default">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('rooms.store') }}"  role="form" enctype="multipart/form-data">
+                        <form class="custom-form" method="POST" action="{{ route('rooms.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('room.form')

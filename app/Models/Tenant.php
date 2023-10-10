@@ -31,9 +31,6 @@ class Tenant extends Model
 		'phonenumber' => 'required',
 		'email' => 'required',
 		'roomid' => 'required',
-		'rentdue' => 'required',
-		'rentpaid' => 'required',
-		'balance' => 'required',
     ];
 
     protected $perPage = 20;
@@ -43,7 +40,7 @@ class Tenant extends Model
      *
      * @var array
      */
-    protected $fillable = ['fullname','phonenumber','email','roomid','rentdue','rentpaid','balance','datemovedin','datemovedout'];
+    protected $fillable = ['fullname','phonenumber','email','roomid','datemovedin','datemovedout'];
 
 
 

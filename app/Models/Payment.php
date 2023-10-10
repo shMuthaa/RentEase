@@ -22,10 +22,10 @@ class Payment extends Model
 {
     
     static $rules = [
-		'roomid' => 'required',
-		'tenantid' => 'required',
-		'datepaid' => 'required',
-		'amountpaid' => 'required',
+      'roomid' => 'required',
+      'tenantid' => 'required',
+      'datepaid' => 'required',
+      'amountpaid' => 'required',
     ];
 
     protected $perPage = 20;
