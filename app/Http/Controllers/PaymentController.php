@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\Room;
 use App\Models\Tenant;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 /**
  * Class PaymentController
@@ -110,5 +111,30 @@ class PaymentController extends Controller
 
         return redirect()->route('payments.index')
             ->with('success', 'Payment deleted successfully');
+    }
+
+    public function make_payment(){
+        $rooms = Room::all();
+        return view('paystack.index', compact('rooms'));
+
+    }
+ 
+    public function paystackcallback(Request $request){
+       Log::info($request->all());
+    
+       if($request->status == 'success'){
+          
+
+        $payment = new Payment();
+        
+        $payment->tenantid = $request->tenantid;
+        $payment->roomid = $request->roomid;
+        $payment->datepaid = Carbon::today()->toDateString();
+        $payment->amountpaid = $request->amount;
+
+        $payment->save();
+
+       }
+        
     }
 }

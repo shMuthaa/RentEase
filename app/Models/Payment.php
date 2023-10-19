@@ -20,29 +20,23 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Payment extends Model
 {
-  static $rules = [
-    'roomid' => 'required',
-    'tenantid' => 'required',
-    'datepaid' => 'required',
-    'amountpaid' => 'required',
-  ];
+    
+    static $rules = [
+      'roomid' => 'required',
+      'tenantid' => 'required',
+      'datepaid' => 'required',
+      'amountpaid' => 'required',
+    ];
 
-  protected $perPage = 20;
+    protected $perPage = 20;
 
-  /**
-   * Attributes that should be mass-assignable.
-   *
-   * @var array
-   */
-  protected $fillable = ['roomid', 'tenantid', 'datepaid', 'amountpaid'];
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['roomid','tenantid','datepaid','amountpaid'];
 
 
-  public function paymentRoomRelationship()
-  {
-    return $this->belongsTo(Room::class, 'roomid');
-  }
-  public function paymentTenantRelationship()
-  {
-    return $this->belongsTo(Tenant::class, 'tenantid');
-  }
+
 }

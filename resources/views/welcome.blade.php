@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="homepage-container">
     <h1>Rentease</h1>
     <div class="links">
-        <a href="#loginForm" onClick="toggleView('login')" class="form-link">Login</a>
-        <a href="#registerForm" onClick="toggleView('register')" class="form-link">Register</a>
+      {{-- <a href="" class="form-link">Pay Rent</a> --}}
+      <a href="#loginForm" onClick="toggleView('login')" class="form-link">Login</a>
+      {{-- <a href="#registerForm" onClick="toggleView('register')" class="form-link">Register</a> --}}
     </div>
 </div>
 
@@ -20,7 +22,7 @@
         <p class="switch-text">Don't have an account? <span onclick="toggleForm()">Register</span></p>
       </form>
     </div>
-    <div class="form-container" id="registerForm" style="display: none;">
+    {{-- <div class="form-container" id="registerForm" style="display: none;">
       <h2>Register</h2>
       <form  method="POST" action="{{ route('register') }}">
         @csrf
@@ -31,6 +33,6 @@
         <button type="submit">Register</button>
         <p class="switch-text">Already have an account? <span onclick="toggleForm()">Login</span></p>
       </form>
-    </div>
+    </div> --}}
   </div>
 @endsection

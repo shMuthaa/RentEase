@@ -46,39 +46,83 @@
             
             <!-- content sidebar -->
             <div class="sidebar__content">
+                @if(auth()->check())
+                    @if(auth()->user()->usertype == 'administrator')
+                        {{-- Admin Menu --}}
+                        <a class="{{ (request()->is('home')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/home">
+                            <span class="material-icons-sharp sidebar__item-icon sidebar__item-icon--active">grid_view</span>
+                            <h3 class="sidebar__item-text">Dashboard</h3>
+                        </a>
+                        
+                        <a class="{{ (request()->is('tenants')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="{{ route('tenants.index') }}">
+                            <span class="material-icons-sharp sidebar__item-icon">person_outline</span>
+                            <h3 class="sidebar__item-text">Tenants</h3>
+                        </a>
 
-                <a class="{{ (request()->is('home')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/home">
-                    <span class="material-icons-sharp sidebar__item-icon sidebar__item-icon--active">grid_view</span>
-                    <h3 class="sidebar__item-text">Dashboard</h3>
-                </a>
+                        <a class="{{ (request()->is('payments')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/payments">
+                            <span class="material-icons-sharp sidebar__item-icon">receipt_long</span>
+                            <h3 class="sidebar__item-text">Payments</h3>
+                        </a>
+                        
+                        <a class="{{ (request()->is('rooms')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/rooms">
+                            <span class="material-icons-sharp sidebar__item-icon">inventory</span>
+                            <h3 class="sidebar__item-text">Rooms</h3>
+                        </a>
+
+                        <a class="{{ (request()->is('users')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/users">
+                            <span class="material-icons-sharp sidebar__item-icon">person</span>
+                            <h3 class="sidebar__item-text">Users</h3>
+                        </a>
+
+                        <a class="sidebar__item"  href="{{ route('logout') }}"
+                            onclick="event.preventDefault()  
+                            document.getElementById('logout-form').submit();">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                <span class="material-icons-sharp sidebar__item-icon">logout</span>
+                                <h3 class="sidebar__item-text">Logout</h3>
+                        </a> 
+                        
+                    @elseif(auth()->user()->usertype == 'tenant')
+                       
+                     
+
+                        <a class="{{ (request()->is('home')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/home">
+                            <span class="material-icons-sharp sidebar__item-icon">money</span>
+                            <h3 class="sidebar__item-text">Payment History</h3>
+                        </a>
+
+                        <a class="{{ (request()->is('make-payment')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/make-payment">
+                            <span class="material-icons-sharp sidebar__item-icon">add</span>
+                            <h3 class="sidebar__item-text">Pay with Paystack</h3>
+                        </a>                     
+                       
+                        <a class="sidebar__item"  href="{{ route('logout') }}"
+                            onclick="event.preventDefault()  
+                            document.getElementById('logout-form').submit();">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                <span class="material-icons-sharp sidebar__item-icon">logout</span>
+                                <h3 class="sidebar__item-text">Logout</h3>
+                        </a> 
+
+
+
+
+
+                    @endif
+
+            @endif
                 
-                <a class="{{ (request()->is('tenants')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="{{ route('tenants.index') }}">
-                    <span class="material-icons-sharp sidebar__item-icon">person_outline</span>
-                    <h3 class="sidebar__item-text">Tenants</h3>
-                </a>
-
-                <a class="{{ (request()->is('payments')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/payments">
-                    <span class="material-icons-sharp sidebar__item-icon">receipt_long</span>
-                    <h3 class="sidebar__item-text">Payments</h3>
-                </a>
                 
-                <a class="{{ (request()->is('rooms')) ? 'sidebar__item sidebar__item--active':'sidebar__item' }}" href="/rooms">
-                    <span class="material-icons-sharp sidebar__item-icon">inventory</span>
-                    <h3 class="sidebar__item-text">Rooms</h3>
-                </a>
-
-        
-                <a class="sidebar__item"  href="{{ route('logout') }}"
-                onclick="event.preventDefault()  
-                document.getElementById('logout-form').submit();">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                    <span class="material-icons-sharp sidebar__item-icon">logout</span>
-                    <h3 class="sidebar__item-text">Logout</h3>
-                </a> 
+                {{-- Tenant Menu --}}
 
             </div>
+
+
+
         </aside>
 
         @yield('content')
